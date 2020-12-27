@@ -1,0 +1,9 @@
+EXECS = ExactMP
+
+SIMPLE_DIR = /users/u3/vchandu/simple-4.4J
+
+OPT         = -O$(O_LEVEL)
+# OPT       = -g
+# OPT       = -O3 -fomit-frame-pointer -fkeep-inline-functions -finline-limit=50000 -fforce-addr -funroll-loops -frerun-cse-after-loop -frerun-loop-opt -falign-functions=4 -O$(O_LEVEL)
+
+include $(SIMPLE_DIR)/Makefile.smp.mk

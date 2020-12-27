@@ -1,0 +1,43 @@
+ExactMP: An Efficient Parallel Exact Solver for Phylogenetic Tree Reconstruction Using Maximum Parsimony
+
+Authors: David Bader, Vaddadi Chandu, and Mi Yan
+
+1. This directory file contains 4 parallel implementations of the Phylogeny Reconstruction Problem
+and a sequential implementation. Of the four parallel ones, one is on distributed memory machine
+and others are on shared memory machine.
+MPI_Implementation/
+SMP_ListBased/
+SMP_QueueBasedAsynchronous/
+SMP_QueueBasedSynchronous/
+Sequential/
+
+2. The shared memory implementation is done using the SIMPLE library which is available on GitHub at
+https://github.com/Bader-Research/SIMPLE
+
+3. SIMPLE is easy to install with proper instructions given in the README file in the SIMPLE library.
+
+4. Compiling the code:
+make -f Makefile.orig
+This generates an executable by name ExactMP.
+
+5. Running the code:
+ExactMP [-t <# threads>] -- <-q> <input matrix> [desired # of arrangements for randomization]
+Options: 
+a. -t indicates the number of threads, default is 2
+b. -q -> allows quiet mode, if not selected it prints each step to the console.
+c. input matrix -> this is given in each directory by name 'xac'
+d. desired # of arrangements for randomization -> this can be any positive integer value, the larger the number is
+the higher the number of random trees evaluated and hence the initial upper bound is likely to be close to exact solution.
+However, this also will make the execution slower. An optimal value should be around 50.
+
+6. The shared memory implementations differ in some conceptual issues and hence, many files
+may look similar. 
+
+7. The MPI implementation uses MPICH or any other implementation of MPI, however I used MPICH.
+
+8. Compiling the MPI code
+same as any mpi code.
+
+9. Running the MPI code:
+mpirun -np # -machinefile <name> ./ExactMP xac <10>
+
